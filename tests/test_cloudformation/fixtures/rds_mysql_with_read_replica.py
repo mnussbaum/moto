@@ -101,9 +101,9 @@ template = {
       "Type": "AWS::RDS::DBSecurityGroup",
       "Condition" : "Is-EC2-Classic",
       "Properties": {
-        "DBSecurityGroupIngress": {
+        "DBSecurityGroupIngress": [{
           "EC2SecurityGroupName": { "Ref": "EC2SecurityGroup" }
-        },
+        }],
         "GroupDescription": "database access"
       }
     },

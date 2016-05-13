@@ -120,8 +120,17 @@ class Model(type):
 
 class BaseBackend(object):
     def reset(self):
+        try:
+            region = self.region
+        except AttributeError:
+            region = None
+
         self.__dict__ = {}
-        self.__init__()
+
+        if region is not None:
+            self.__init__(region)
+        else:
+            self.__init__()
 
     @property
     def _url_module(self):
